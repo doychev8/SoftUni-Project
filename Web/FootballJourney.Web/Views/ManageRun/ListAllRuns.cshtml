@@ -1,0 +1,14 @@
+﻿@model List<FootballJourney.Data.Models.Run>
+
+@{ 
+    foreach (var run in Model)
+    {
+        <h1>@run.Team.Name</h1>
+        <br />
+
+        @foreach (var item in run.Team.Players)
+        {
+            <div>@item.FirstName</div>
+        }
+    }
+}

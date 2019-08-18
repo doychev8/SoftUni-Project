@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-FootballJourney-BBB373B5-EF3F-4DBB-B8AA-7152CEC275BF</UserSecretsId>
+	<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.48" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\FootballJourney.Data.Models\FootballJourney.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FootballJourney.Data\FootballJourney.Data.csproj" />
+    <ProjectReference Include="..\..\FootballJourney.Common\FootballJourney.Common.csproj" />
+    <ProjectReference Include="..\..\Services\FootballJourney.Services.Data\FootballJourney.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\FootballJourney.Services.Mapping\FootballJourney.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\FootballJourney.Services.Messaging\FootballJourney.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\FootballJourney.Services\FootballJourney.Services.csproj" />
+    <ProjectReference Include="..\FootballJourney.Web.Infrastructure\FootballJourney.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\FootballJourney.Web.ViewModels\FootballJourney.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Views\Team\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Test\Test.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

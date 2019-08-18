@@ -1,0 +1,46 @@
+﻿@model FootballJourney.Data.Models.Team
+@{
+    this.ViewData["Title"] = "Start run";
+    this.ViewData["TeamId"] = Model.Id;
+}
+
+
+    <div class="container">
+        <h1><center>@ViewData["Team Name"]</center></h1>
+        <br />
+
+        @{
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Players.ToList())
+                    {
+                        <tr>
+                            <td>@item.Position</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Points</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+
+        <form asp-controller="ManageRun" asp-action="ShowCurrentRun" method="get">
+            <button type="submit">
+                Start run
+            </button>
+        </form>
+
+
+</div>
+
+        <!--Position    FirstName    LastName   Points-->

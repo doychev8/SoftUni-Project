@@ -1,0 +1,17 @@
+﻿@model FootballJourney.Data.Models.Run
+
+
+@{
+    <div>@Model.User.UserName</div>
+    <div>@Model.Team.Name</div>
+    <div>@Model.Stage</div>
+
+}
+
+
+<form asp-controller="ManageRun" asp-action="GetNextOpponent" method="post">
+    <button type="submit">
+        Proceed
+    </button>
+</form>
+

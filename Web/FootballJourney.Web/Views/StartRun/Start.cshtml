@@ -1,0 +1,17 @@
+﻿@model CreateTeamViewModel
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <form asp-controller="StartRun" asp-action="Start">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <label>Select team name</label>
+                <input asp-for="TeamName" type="text" class="form-control" />
+                <br />
+                <button type="submit">Generate team</button>
+            </form>
+        </div>
+    </div>
+</div>
+

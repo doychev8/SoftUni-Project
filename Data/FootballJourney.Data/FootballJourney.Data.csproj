@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190816174633_Initial.cs" />
+    <Compile Remove="Migrations\20190816174633_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190816181731_Initial.cs" />
+    <Compile Remove="Migrations\20190816181731_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190816183005_Initial.cs" />
+    <Compile Remove="Migrations\20190816183005_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190816184157_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190816184157_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20190816184538_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190816184538_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20190817125403_AddedTierPropertyToTeam.cs" />
+    <Compile Remove="Migrations\20190817125403_AddedTierPropertyToTeam.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FootballJourney.Common\FootballJourney.Common.csproj" />
+    <ProjectReference Include="..\FootballJourney.Data.Common\FootballJourney.Data.Common.csproj" />
+    <ProjectReference Include="..\FootballJourney.Data.Models\FootballJourney.Data.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Veselin\.nuget\packages\microsoft.net.compilers\1.0.0\build\..\tools\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\FootballJourney.Data.Common\FootballJourney.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FootballJourney.Data.Models\FootballJourney.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FootballJourney.Data\FootballJourney.Data.csproj" />
+    <ProjectReference Include="..\..\FootballJourney.Common\FootballJourney.Common.csproj" />
+    <ProjectReference Include="..\FootballJourney.Services.Data\FootballJourney.Services.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,57 @@
+﻿@model FootballJourney.Data.Models.Team
+
+
+@{
+    <center><h1>@Model.Name</h1></center>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var item in Model.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Goalkeeper).ToList())
+                {
+                <tr>
+                    <td>@item.Position</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Points</td>
+                </tr>
+            }
+                
+                @foreach (var item in Model.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Defender).ToList())
+                {
+                    <tr>
+                        <td>@item.Position</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Points</td>
+                    </tr>
+                }
+                @foreach (var item in Model.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Midfielder).ToList())
+                {
+                    <tr>
+                        <td>@item.Position</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Points</td>
+                    </tr>
+                }
+                @foreach (var item in Model.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Attacker).ToList())
+                {
+                    <tr>
+                        <td>@item.Position</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Points</td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+}
