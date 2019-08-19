@@ -104,6 +104,7 @@
             services.AddTransient<IStartRunService, StartRunService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRunService, RunService>();
+            services.AddTransient<IMatchService, MatchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

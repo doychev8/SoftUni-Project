@@ -15,6 +15,9 @@ namespace FootballJourney.Data.Models
         public virtual Team Team { get; set; }
         public string TeamId { get; set; }
 
+        public virtual Team CurrentOpponent { get; set; }
+        public string CurrentOpponentId { get; set; }
+
         public int Money { get; set; }
 
         public int Stage { get; set; }

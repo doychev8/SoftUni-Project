@@ -62,13 +62,14 @@ namespace FootballJourney.Web.Controllers
         
         public IActionResult GetNextOpponent()
         {
+            
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var user = this.userService.GetUser(userId);
             var currentRun = this.runService.GetCurrentRun(user);
 
-            var opponent = this.runService.GetOpponent(currentRun.Stage);
-
+            var opponent = this.runService.GetOpponent(currentRun);
+            
 
             return this.View(opponent);
         }

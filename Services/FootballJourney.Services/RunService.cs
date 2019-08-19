@@ -36,11 +36,15 @@ namespace FootballJourney.Services
             return run;
         }
 
-        public Team GetOpponent(int stage)
+        public Team GetOpponent(Run run)
         {
             var opponents = this.db.Teams.Where(x => x.IsOpponentTeam == true).ToList();
 
-            var opponent = this.AssignOpponent(stage, opponents);
+            var opponent = this.AssignOpponent(run.Stage, opponents);
+            run.CurrentOpponent = opponent;
+
+            this.db.SaveChanges();
+
             return opponent;
 
         }

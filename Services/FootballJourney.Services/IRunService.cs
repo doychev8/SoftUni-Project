@@ -13,6 +13,6 @@ namespace FootballJourney.Services
 
         Run GetCurrentRun(ApplicationUser user);
 
-        Team GetOpponent(int stage);
+        Team GetOpponent(Run run);
     }
 }

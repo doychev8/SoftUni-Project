@@ -1,0 +1,15 @@
+﻿@model FootballJourney.Data.Models.Run
+
+
+<center><h1>You won Pog</h1></center>
+
+
+@{
+    var teamPoints = Model.Team.AttackPoints + Model.Team.DefencePoints + Model.Team.MidfieldPoints;
+    var opponentPoints = Model.CurrentOpponent.AttackPoints + Model.CurrentOpponent.DefencePoints + Model.CurrentOpponent.MidfieldPoints;
+
+
+}
+
+Your points: <div>@teamPoints</div>
+Opponent points: <div>@opponentPoints</div>

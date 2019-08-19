@@ -165,6 +165,8 @@ namespace FootballJourney.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CurrentOpponentId");
+
                     b.Property<bool>("IsEnded");
 
                     b.Property<int>("Money");
@@ -176,6 +178,8 @@ namespace FootballJourney.Data.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrentOpponentId");
 
                     b.HasIndex("TeamId");
 
@@ -334,6 +338,10 @@ namespace FootballJourney.Data.Migrations
 
             modelBuilder.Entity("FootballJourney.Data.Models.Run", b =>
                 {
+                    b.HasOne("FootballJourney.Data.Models.Team", "CurrentOpponent")
+                        .WithMany()
+                        .HasForeignKey("CurrentOpponentId");
+
                     b.HasOne("FootballJourney.Data.Models.Team", "Team")
                         .WithMany()
                         .HasForeignKey("TeamId");
