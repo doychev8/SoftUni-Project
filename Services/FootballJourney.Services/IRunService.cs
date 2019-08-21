@@ -14,5 +14,7 @@ namespace FootballJourney.Services
         Run GetCurrentRun(ApplicationUser user);
 
         Team GetOpponent(Run run);
+
+        void GoToNextStage(Run run);
     }
 }

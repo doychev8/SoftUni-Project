@@ -8,6 +8,6 @@ namespace FootballJourney.Services
     public interface IMatchService
     {
 
-        bool CalculateResult(Run run);
+        Dictionary<string, int> CalculateResult(Run run);
     }
 }

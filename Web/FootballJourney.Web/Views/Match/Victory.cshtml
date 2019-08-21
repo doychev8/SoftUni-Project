@@ -1,15 +1,13 @@
 ﻿@model FootballJourney.Data.Models.Run
 
 
-<center><h1>You won Pog</h1></center>
+<center><h1>You won</h1></center>
 
 
-@{
-    var teamPoints = Model.Team.AttackPoints + Model.Team.DefencePoints + Model.Team.MidfieldPoints;
-    var opponentPoints = Model.CurrentOpponent.AttackPoints + Model.CurrentOpponent.DefencePoints + Model.CurrentOpponent.MidfieldPoints;
+Your goals: <div>@this.ViewBag.userGoals</div>
+Opponent goals: <div>@this.ViewBag.opponentGoals</div>
 
 
-}
-
-Your points: <div>@teamPoints</div>
-Opponent points: <div>@opponentPoints</div>
+<form asp-controller="ManageRun" asp-action="GetNExtOpponent" method="post">
+    <button type="submit">Proceed to the next game</button>
+</form>

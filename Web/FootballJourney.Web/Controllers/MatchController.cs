@@ -12,11 +12,13 @@ namespace FootballJourney.Web.Controllers
     {
         private readonly IMatchService matchService;
         private readonly IUserService userService;
+        private readonly IRunService runService;
 
-        public MatchController(IMatchService matchService, IUserService userService)
+        public MatchController(IMatchService matchService, IUserService userService, IRunService runService)
         {
             this.matchService = matchService;
             this.userService = userService;
+            this.runService = runService;
         }
 
         public IActionResult Play()
@@ -28,11 +30,17 @@ namespace FootballJourney.Web.Controllers
 
             var result = this.matchService.CalculateResult(run);
 
-            if (result == true)
+            this.ViewBag.userGoals = result["userGoals"];
+            this.ViewBag.opponentGoals = result["opponentGoals"];
+
+            if (result["isWinner"] == 1)
             {
+                this.runService.GoToNextStage(run);
+
                 return this.View("Victory", run);
             }
 
+            this.runService.AbandonRun(userId, run);
             return this.View("Defeat", run);
         }
     }

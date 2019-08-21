@@ -30,6 +30,7 @@ namespace FootballJourney.Services
 
         }
 
+
         public Run GetCurrentRun(ApplicationUser user)
         {
             var run = user.CurrentRun;
@@ -57,6 +58,13 @@ namespace FootballJourney.Services
 
 
             return runs;
+        }
+
+        public void GoToNextStage(Run run)
+        {
+            run.Stage++;
+            run.CurrentOpponent = null;
+            this.db.SaveChanges();
         }
 
         private Team AssignOpponent(int stage, List<Team> opponents)

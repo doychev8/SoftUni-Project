@@ -17,14 +17,18 @@ namespace FootballJourney.Services
             this.db = db;
         }
 
-        public bool CalculateResult(Run run)
+        public Dictionary<string, int> CalculateResult(Run run)
         {
+            var dict = new Dictionary<string, int>();
+
             var userTeam = run.Team;
             var opponent = run.CurrentOpponent;
 
             var userPoints = 0;
             var opponentPoints = 0;
 
+            var userGoals = 0;
+            var opponentGoals = 0;
 
             var userTeamAttackingPoints = this.GetPoints(userTeam, Position.Attacker);
             var userTeamDefensePoints = this.GetPoints(userTeam, Position.Defender);
@@ -65,12 +69,34 @@ namespace FootballJourney.Services
             }
 
 
+            userGoals = userPoints / 50;
+            opponentGoals = opponentPoints / 50;
+
             if (userPoints >= opponentPoints)
             {
-                return true;
+                dict.Add("isWinner", 1);
+                if (userGoals == opponentGoals)
+                {
+                    userGoals++;
+                    
+                }
+                dict.Add("userGoals", userGoals);
+                dict.Add("opponentGoals", opponentGoals);
+
+                return dict;
             }
 
-            return false;
+            dict.Add("isWinner", 0);
+
+            if (userGoals == opponentGoals)
+            {
+                opponentGoals++;
+                
+            }
+            dict.Add("userGoals", userGoals);
+            dict.Add("opponentGoals", opponentGoals);
+
+            return dict;
         }
 
 

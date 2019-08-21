@@ -56,22 +56,32 @@ namespace FootballJourney.Web.Controllers
 
             var run = this.runService.GetCurrentRun(user);
 
+            if (run == null)
+            {
+                return this.View("NoActiveRunError");
+            }
+
+
             return this.View(run);
         }
 
         
         public IActionResult GetNextOpponent()
         {
-            
+
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var user = this.userService.GetUser(userId);
             var currentRun = this.runService.GetCurrentRun(user);
 
-            var opponent = this.runService.GetOpponent(currentRun);
-            
+            if (currentRun.CurrentOpponent != null)
+            {
+                return this.View(currentRun);
+            }
 
-            return this.View(opponent);
+            this.runService.GetOpponent(currentRun);
+
+            return this.View(currentRun);
         }
     }
 }
