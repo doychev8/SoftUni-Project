@@ -1,5 +1,6 @@
 ﻿using FootballJourney.Data;
 using FootballJourney.Data.Models;
+using FootballJourney.Data.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace FootballJourney.Services
 {
     public class RunService : IRunService
     {
+        private static Random rng = new Random();
         private readonly ApplicationDbContext db;
 
         public RunService(ApplicationDbContext db)
@@ -30,6 +32,76 @@ namespace FootballJourney.Services
 
         }
 
+        public void ApplyConsumable(Consumable consumable, Team team)
+        {
+            var consumableType = consumable.Type;
+            var consumablePosition = consumable.Position;
+
+
+            switch (consumableType)
+            {
+                case ConsumableType.Team:
+                    switch (consumablePosition)
+                    {
+                        case Position.Defender:
+                            foreach (var defender in team.Players.Where(x => x.Position == Position.Defender))
+                            {
+                                defender.Points += consumable.Points;
+                            }
+                            break;
+                        case Position.Midfielder:
+                            foreach (var midfielder in team.Players.Where(x => x.Position == Position.Midfielder))
+                            {
+                                midfielder.Points += consumable.Points;
+                            }
+                            break;
+                        case Position.Attacker:
+                            foreach (var attacker in team.Players.Where(x => x.Position == Position.Attacker))
+                            {
+                                attacker.Points += consumable.Points;
+                            }
+                            break;
+                    }
+                    break;
+
+                case ConsumableType.Individual:
+                    switch (consumable.Position)
+                    {
+
+                        case Position.Goalkeeper:
+                            var keeper = team.Players.Where(x => x.Position == Position.Goalkeeper).FirstOrDefault();
+                            keeper.Points += consumable.Points;
+                            break;
+                        case Position.Defender:
+                            var defenders = team.Players.Where(x => x.Position == Position.Defender).ToList();
+                            var defenderIndex = rng.Next(0, defenders.Count - 1);
+                            defenders[defenderIndex].Points += consumable.Points;
+                            break;
+                        case Position.Midfielder:
+                            var midfielders = team.Players.Where(x => x.Position == Position.Midfielder).ToList();
+                            var midfielderIndex = rng.Next(0, midfielders.Count - 1);
+                            midfielders[midfielderIndex].Points += consumable.Points;
+                            break;
+                        case Position.Attacker:
+                            var attackers = team.Players.Where(x => x.Position == Position.Attacker).ToList();
+                            var attackerIndex = rng.Next(0, attackers.Count - 1);
+                            attackers[attackerIndex].Points += consumable.Points;
+                            break;
+                    }
+                    break;
+                
+            }
+
+            foreach (var player in team.Players)
+            {
+                if (player.Points > 99)
+                {
+                    player.Points = 99;
+                }
+            }
+
+            this.db.SaveChanges();
+        }
 
         public Run GetCurrentRun(ApplicationUser user)
         {
@@ -64,6 +136,16 @@ namespace FootballJourney.Services
         {
             run.Stage++;
             run.CurrentOpponent = null;
+            this.db.SaveChanges();
+        }
+
+        public void MakeTransfer(Run run, Player player)
+        {
+            var playerToTransfer = this.GetPlayerForTransfer(player.Points, player.Position);
+
+            run.Team.Players.Remove(player);
+            run.Team.Players.Add(playerToTransfer);
+
             this.db.SaveChanges();
         }
 
@@ -105,5 +187,25 @@ namespace FootballJourney.Services
 
             return opponent;
         }
+
+        private Player GetPlayerForTransfer(int points, Position position)
+        {
+            var eligiblePlayers = this.db.Players.Where(x => x.Position == position
+                && x.Points > points).ToList();
+
+            if (eligiblePlayers.Count == 0)
+            {
+                eligiblePlayers = this.db.Players.Where(x => x.Position == position).ToList();
+            }
+
+            var random = new Random();
+            var index = random.Next(0, eligiblePlayers.Count - 1);
+
+            var player = eligiblePlayers[index];
+
+            return player;
+        }
+
+        
     }
 }

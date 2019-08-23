@@ -2,9 +2,17 @@
 
 
 @{
+    var players = Model.Team.Players.ToList();
     <div>@Model.User.UserName</div>
     <div>@Model.Team.Name</div>
     <div>@Model.Stage</div>
+    <br />
+    @foreach (var item in players)
+    {
+        <div>
+           @item.Position @item.LastName @item.Points
+        </div>
+    }
 
 }
 

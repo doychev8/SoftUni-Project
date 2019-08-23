@@ -14,11 +14,15 @@ namespace FootballJourney.Web.Controllers
     {
         private readonly IRunService runService;
         private readonly IUserService userService;
+        private readonly IPlayerService playerService;
+        private readonly IConsumableService consumableService;
 
-        public ManageRunController(IRunService runService, IUserService userService)
+        public ManageRunController(IRunService runService, IUserService userService, IPlayerService playerService, IConsumableService consumableService)
         {
             this.runService = runService;
             this.userService = userService;
+            this.playerService = playerService;
+            this.consumableService = consumableService;
         }
 
         [Authorize]
@@ -65,6 +69,52 @@ namespace FootballJourney.Web.Controllers
             return this.View(run);
         }
 
+        public IActionResult TransferPlayer()
+        {
+            var playerId = this.Request.Form["players"].ToString();
+            var player = this.playerService.GetPlayer(playerId);
+
+            var user = this.GetUser();
+
+            this.runService.MakeTransfer(user.CurrentRun, player);
+
+            return this.View();
+        }
+
+        public IActionResult BuyConsumable()
+        {
+            var consumables = this.consumableService.GetConsumables();
+
+            return this.View(consumables);
+        }
+
+        public IActionResult ApplyConsumable()
+        {
+            var consumableId = this.Request.Form["ApplyingConsumable"].ToString();
+            var consumable = this.consumableService.GetConsumable(consumableId);
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = this.userService.GetUser(userId);
+
+            var run = this.runService.GetCurrentRun(user);
+
+            this.runService.ApplyConsumable(consumable, run.Team);
+
+
+            return this.View();
+        }
+
+        public IActionResult MakeTransfer()
+        {
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = this.userService.GetUser(userId);
+
+            var run = this.runService.GetCurrentRun(user);
+            var currentTeam = run.Team.Players.ToList();
+
+            return this.View(currentTeam);
+        }
         
         public IActionResult GetNextOpponent()
         {
@@ -82,6 +132,14 @@ namespace FootballJourney.Web.Controllers
             this.runService.GetOpponent(currentRun);
 
             return this.View(currentRun);
+        }
+
+        private ApplicationUser GetUser()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = this.userService.GetUser(userId);
+
+            return user;
         }
     }
 }

@@ -6,8 +6,7 @@ namespace FootballJourney.Data.Models.Enums
 {
     public enum ConsumableType
     {
-        AttackBoost = 1,
-        MidfieldBoost = 2, 
-        DefenseBoost = 3
+        Team = 1,
+        Individual = 2,
     }
 }

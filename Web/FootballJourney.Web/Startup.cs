@@ -105,6 +105,8 @@
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRunService, RunService>();
             services.AddTransient<IMatchService, MatchService>();
+            services.AddTransient<IPlayerService, PlayerService>();
+            services.AddTransient<IConsumableService, ConsumableService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

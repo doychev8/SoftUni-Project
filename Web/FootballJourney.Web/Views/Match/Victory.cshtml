@@ -8,6 +8,14 @@ Your goals: <div>@this.ViewBag.userGoals</div>
 Opponent goals: <div>@this.ViewBag.opponentGoals</div>
 
 
-<form asp-controller="ManageRun" asp-action="GetNExtOpponent" method="post">
+<form asp-controller="ManageRun" asp-action="GetNextOpponent" method="post">
     <button type="submit">Proceed to the next game</button>
+</form>
+
+<form asp-controller="ManageRun" asp-action="MakeTransfer">
+    <button type="submit">Make a transfer</button>
+</form>
+
+<form asp-controller="ManageRun" asp-action="BuyConsumable">
+    <button type="submit">Buy consumable</button>
 </form>

@@ -9,10 +9,12 @@ namespace FootballJourney.Data.Models
     {
         public string Id { get; set; }
 
-        public int Tier { get; set; }
-
+        public string Name { get; set; }
+        
         public int Points { get; set; }
 
         public ConsumableType Type { get; set; }
+
+        public Position Position { get; set; }
     }
 }

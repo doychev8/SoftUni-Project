@@ -16,5 +16,9 @@ namespace FootballJourney.Services
         Team GetOpponent(Run run);
 
         void GoToNextStage(Run run);
+
+        void MakeTransfer(Run run, Player player);
+
+        void ApplyConsumable(Consumable consumable, Team team);
     }
 }

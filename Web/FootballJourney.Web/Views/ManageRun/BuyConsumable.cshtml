@@ -1,0 +1,26 @@
+﻿@model List<FootballJourney.Data.Models.Consumable>
+
+
+<div>
+    Select a consumable from the list to boost your team. Individual consumables boost a random player on the stated position.
+    Team consumables boost all players on the given position.
+</div>
+
+
+@using (Html.BeginForm("ApplyConsumable", "ManageRun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.DropDownList("ApplyingConsumable", new List<SelectListItem> {
+
+          new SelectListItem {Text = $"{Model[0].Name}", Value = Model[0].Id},
+          new SelectListItem {Text = $"{Model[1].Name}", Value = Model[1].Id},
+          new SelectListItem {Text = $"{Model[2].Name}", Value = Model[2].Id},
+          
+
+    }, "Select consumable");
+
+    <br />
+
+    <input type="submit" value="Submit" />
+}

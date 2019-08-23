@@ -1,0 +1,32 @@
+﻿@model List<FootballJourney.Data.Models.Player>
+
+<div>
+    Select a player from the list. This player will be removed from your team and a better one will be added to your team. Note that if there 
+    aren't better players available, you will be assigned a random one on the same position!
+</div>
+
+
+@using (Html.BeginForm("TransferPlayer", "ManageRun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.DropDownList("players", new List<SelectListItem> {
+
+          new SelectListItem {Text = $"{Model[0].LastName} - {Model[0].Points}", Value = Model[0].Id},
+          new SelectListItem {Text = $"{Model[1].LastName} - {Model[1].Points}", Value = Model[1].Id},
+          new SelectListItem {Text = $"{Model[2].LastName} - {Model[2].Points}", Value = Model[2].Id},
+          new SelectListItem {Text = $"{Model[3].LastName} - {Model[3].Points}",Value = Model[3].Id},
+          new SelectListItem {Text = $"{Model[4].LastName} - {Model[4].Points}",Value = Model[4].Id},
+          new SelectListItem {Text = $"{Model[5].LastName} - {Model[5].Points}",Value = Model[5].Id},
+          new SelectListItem {Text = $"{Model[6].LastName} - {Model[6].Points}",Value = Model[6].Id},
+          new SelectListItem {Text = $"{Model[7].LastName} - {Model[7].Points}",Value = Model[7].Id},
+          new SelectListItem {Text = $"{Model[8].LastName} - {Model[8].Points}",Value = Model[8].Id},
+          new SelectListItem {Text = $"{Model[9].LastName} - {Model[9].Points}",Value = Model[9].Id},
+          new SelectListItem {Text = $"{Model[10].LastName} - {Model[10].Points}",Value = Model[10].Id},
+
+    }, "Select Player");
+
+    <br />
+
+    <input type="submit" value="Submit" />
+}
