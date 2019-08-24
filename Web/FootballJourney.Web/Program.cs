@@ -9,7 +9,7 @@
     {
         public static void Main(string[] args)
         {
-
+            // TODO: Apply functionality if tier 5 opponent is defeated; Try listing the team in transfer and consumable page
 
             CreateWebHostBuilder(args).Build().Run();
 

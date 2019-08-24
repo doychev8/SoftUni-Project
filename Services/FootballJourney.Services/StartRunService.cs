@@ -95,7 +95,7 @@ namespace FootballJourney.Services
         private List<Player> GetAttackers()
         {
             var attackers = new List<Player>();
-            var attackersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Attacker).ToList();
+            var attackersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Attacker && x.IsOpponentPlayer == false).ToList();
 
             attackersFromDb = this.Shuffle(attackersFromDb);
 
@@ -107,7 +107,7 @@ namespace FootballJourney.Services
         private List<Player> GetDefenders()
         {
             var defenders = new List<Player>();
-            var defendersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Defender).ToList();
+            var defendersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Defender && x.IsOpponentPlayer == false).ToList();
 
             defendersFromDb = this.Shuffle(defendersFromDb);
 
@@ -118,7 +118,7 @@ namespace FootballJourney.Services
 
         private Player GetGoalkeeper()
         {
-            var keepers = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Goalkeeper).ToList();
+            var keepers = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Goalkeeper && x.IsOpponentPlayer == false).ToList();
             var random = new Random();
 
             var index = random.Next(0, keepers.Count - 1);
@@ -130,7 +130,7 @@ namespace FootballJourney.Services
         private List<Player> GetMidfielders()
         {
             var midfielders = new List<Player>();
-            var midfieldersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Midfielder).ToList();
+            var midfieldersFromDb = this.context.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Midfielder && x.IsOpponentPlayer == false).ToList();
 
             midfieldersFromDb = this.Shuffle(midfieldersFromDb);
 

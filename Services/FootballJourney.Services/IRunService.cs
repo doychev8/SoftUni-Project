@@ -19,6 +19,6 @@ namespace FootballJourney.Services
 
         void MakeTransfer(Run run, Player player);
 
-        void ApplyConsumable(Consumable consumable, Team team);
+        void ApplyConsumable(Consumable consumable, Run run);
     }
 }

@@ -23,5 +23,9 @@ namespace FootballJourney.Data.Models
         public int Stage { get; set; }
 
         public bool IsEnded { get; set; }
- }
+
+        public bool HasMadeTransfer { get; set; }
+
+        public bool HasBoughtConsumable { get; set; }
+    }
 }

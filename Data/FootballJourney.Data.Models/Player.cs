@@ -7,6 +7,11 @@ namespace FootballJourney.Data.Models
 {
     public class Player
     {
+        public Player()
+        {
+            this.InitialPoints = this.Points;
+        }
+
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -17,6 +22,10 @@ namespace FootballJourney.Data.Models
 
         public Position Position { get; set; }
 
+        public int InitialPoints { get; set; }
+
         public int Points { get; set; }
+
+        public bool IsOpponentPlayer { get; set; } = false;
     }
 }

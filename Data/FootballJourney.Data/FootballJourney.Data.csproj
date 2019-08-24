@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20190816184538_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20190817125403_AddedTierPropertyToTeam.cs" />
     <Compile Remove="Migrations\20190817125403_AddedTierPropertyToTeam.Designer.cs" />
+    <Compile Remove="Migrations\20190824160118_AddedAdditionalPropertiesToRunModel.cs" />
+    <Compile Remove="Migrations\20190824160118_AddedAdditionalPropertiesToRunModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

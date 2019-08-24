@@ -76,6 +76,11 @@ namespace FootballJourney.Web.Controllers
 
             var user = this.GetUser();
 
+            if (user.CurrentRun.HasMadeTransfer == true)
+            {
+                return this.View("TransferAlreadyMadeError");
+            }
+
             this.runService.MakeTransfer(user.CurrentRun, player);
 
             return this.View();
@@ -98,8 +103,12 @@ namespace FootballJourney.Web.Controllers
 
             var run = this.runService.GetCurrentRun(user);
 
-            this.runService.ApplyConsumable(consumable, run.Team);
+            if (user.CurrentRun.HasBoughtConsumable == true)
+            {
+                return this.View("ConsumableBoughtError");
+            }
 
+            this.runService.ApplyConsumable(consumable, run);
 
             return this.View();
         }
@@ -132,6 +141,13 @@ namespace FootballJourney.Web.Controllers
             this.runService.GetOpponent(currentRun);
 
             return this.View(currentRun);
+        }
+
+        public IActionResult UpgradeTeam()
+        {
+
+
+            return this.View();
         }
 
         private ApplicationUser GetUser()
