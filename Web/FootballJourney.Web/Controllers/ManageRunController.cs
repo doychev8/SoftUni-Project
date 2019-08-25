@@ -89,6 +89,10 @@ namespace FootballJourney.Web.Controllers
         public IActionResult BuyConsumable()
         {
             var consumables = this.consumableService.GetConsumables();
+            var user = this.GetUser();
+            var run = this.runService.GetCurrentRun(user);
+
+            this.ViewData["TeamToList"] = run.Team.Players;
 
             return this.View(consumables);
         }

@@ -24,3 +24,15 @@
 
     <input type="submit" value="Submit" />
 }
+
+@{ 
+    var players = this.ViewData["TeamToList"] as List<FootballJourney.Data.Models.Player>;
+
+    foreach (var item in players.OrderBy(x => x.Position))
+    {
+        <div>
+            @item.Position - @item.LastName - @item.Points
+        </div>
+        <br />
+    }
+}

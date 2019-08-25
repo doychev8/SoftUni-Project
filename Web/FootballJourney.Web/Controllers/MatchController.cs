@@ -37,6 +37,12 @@ namespace FootballJourney.Web.Controllers
             {
                 this.runService.GoToNextStage(run);
 
+                if (run.Stage > 5)
+                {
+                    this.runService.AbandonRun(userId, run);
+                    return this.View("LastVictory", run);
+                }
+
                 return this.View("Victory", run);
             }
 

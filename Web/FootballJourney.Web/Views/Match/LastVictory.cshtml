@@ -1,0 +1,19 @@
+﻿@model FootballJourney.Data.Models.Run
+
+
+<center><h1>You won</h1></center>
+
+
+Your goals: <div>@this.ViewBag.userGoals</div>
+Opponent goals: <div>@this.ViewBag.opponentGoals</div>
+
+
+Congratulations! You have successfuly beaten all opponents! Your run is now over.
+
+<form asp-controller="Home" asp-action="Index">
+    <button type="submit">Go to home</button>
+</form>
+
+<form asp-controller="StartRun" asp-action="Start">
+    <button type="submit">Start new run</button>
+</form>
