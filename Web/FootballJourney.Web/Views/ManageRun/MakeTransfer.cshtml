@@ -5,30 +5,30 @@
     aren't better players available, you will be assigned a random one on the same position!
 </div>
 
+<br />
 
-@using (Html.BeginForm("TransferPlayer", "ManageRun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("TransferPlayer", "ManageRun", FormMethod.Post, new { @class = "form-control"}))
 {
 
 
     @Html.DropDownList("players", new List<SelectListItem> {
 
-          new SelectListItem {Text = $"{Model[0].LastName} - {Model[0].Points}", Value = Model[0].Id},
-          new SelectListItem {Text = $"{Model[1].LastName} - {Model[1].Points}", Value = Model[1].Id},
-          new SelectListItem {Text = $"{Model[2].LastName} - {Model[2].Points}", Value = Model[2].Id},
-          new SelectListItem {Text = $"{Model[3].LastName} - {Model[3].Points}",Value = Model[3].Id},
-          new SelectListItem {Text = $"{Model[4].LastName} - {Model[4].Points}",Value = Model[4].Id},
-          new SelectListItem {Text = $"{Model[5].LastName} - {Model[5].Points}",Value = Model[5].Id},
-          new SelectListItem {Text = $"{Model[6].LastName} - {Model[6].Points}",Value = Model[6].Id},
-          new SelectListItem {Text = $"{Model[7].LastName} - {Model[7].Points}",Value = Model[7].Id},
-          new SelectListItem {Text = $"{Model[8].LastName} - {Model[8].Points}",Value = Model[8].Id},
-          new SelectListItem {Text = $"{Model[9].LastName} - {Model[9].Points}",Value = Model[9].Id},
-          new SelectListItem {Text = $"{Model[10].LastName} - {Model[10].Points}",Value = Model[10].Id},
+          new SelectListItem {Text = $"{Model[0].Position} - {Model[0].LastName} - {Model[0].Points}", Value = Model[0].Id},
+          new SelectListItem {Text = $"{Model[1].Position} - {Model[1].LastName} - {Model[1].Points}", Value = Model[1].Id},
+          new SelectListItem {Text = $"{Model[2].Position} - {Model[2].LastName} - {Model[2].Points}", Value = Model[2].Id},
+          new SelectListItem {Text = $"{Model[3].Position} - {Model[3].LastName} - {Model[3].Points}",Value = Model[3].Id},
+          new SelectListItem {Text = $"{Model[4].Position} - {Model[4].LastName} - {Model[4].Points}",Value = Model[4].Id},
+          new SelectListItem {Text = $"{Model[5].Position} - {Model[5].LastName} - {Model[5].Points}",Value = Model[5].Id},
+          new SelectListItem {Text = $"{Model[6].Position} - {Model[6].LastName} - {Model[6].Points}",Value = Model[6].Id},
+          new SelectListItem {Text = $"{Model[7].Position} - {Model[7].LastName} - {Model[7].Points}",Value = Model[7].Id},
+          new SelectListItem {Text = $"{Model[8].Position} - {Model[8].LastName} - {Model[8].Points}",Value = Model[8].Id},
+          new SelectListItem {Text = $"{Model[9].Position} - {Model[9].LastName} - {Model[9].Points}",Value = Model[9].Id},
+          new SelectListItem {Text = $"{Model[10].Position} - {Model[10].LastName} - {Model[10].Points}",Value = Model[10].Id},
 
     }, "Select Player");
 
     <br />
-
-    <input type="submit" value="Submit" />
+    <br />
+    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit" />
 }
-
 

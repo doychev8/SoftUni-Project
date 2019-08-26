@@ -1,30 +1,79 @@
 ﻿@model FootballJourney.Data.Models.Run
 
-
+<div>
+    <center><h1>@Model.Team.Name</h1></center>
+</div>
 @{
     var players = Model.Team.Players.ToList();
-    <div>@Model.User.UserName</div>
-    <div>@Model.Team.Name</div>
-    <div>@Model.Stage</div>
+    <div><center><h4>Current stage: @Model.Stage</h4></center></div>
+
     <br />
-    @foreach (var item in players)
-    {
-        <div>
-           @item.Position @item.LastName @item.Points
-        </div>
-    }
+
+    <div class="container">
+
+        @{
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in players.OrderBy(x => x.Position))
+                    {
+                        <tr>
+                            <td>@item.Position</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Points</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
 
 }
 
 
-<form asp-controller="ManageRun" asp-action="GetNextOpponent" method="post">
-    <button type="submit">
-        Proceed
-    </button>
-</form>
 
-<form asp-controller="ManageRun" asp-action="UpgradeTeam">
-    <button type="submit">
-        Upgrade your team
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You are about to abandon your current run! By doing so you won't be able to access it no more and will have to
+                start a new one if you wish to continue playing the game!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form asp-controller="ManageRun" asp-action="AbbandonRun">
+                    <button type="submit" class="btn btn-danger">Abandon run</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <form asp-controller="ManageRun" asp-action="GetNextOpponent">
+        <button type="submit" class="btn btn-success">Proceed to next game</button>
+    </form>
+    <form asp-controller="ManageRun" asp-action="UpgradeTeam">
+        <button type="submit" class="btn btn-primary">Upgrade your team</button>
+    </form>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Abandon run
     </button>
-</form>
+</div>

@@ -53,6 +53,7 @@ namespace FootballJourney.Web.Controllers
             return this.Redirect("/StartRun/Start");
         }
 
+        [Authorize]
         public IActionResult ShowCurrentRun()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
