@@ -4,6 +4,7 @@
     <center><h1>@Model.Team.Name</h1></center>
 </div>
 @{
+
     var players = Model.Team.Players.ToList();
     <div><center><h4>Current stage: @Model.Stage</h4></center></div>
 
@@ -12,7 +13,7 @@
     <div class="container">
 
         @{
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Position</th>
@@ -73,7 +74,9 @@
     <form asp-controller="ManageRun" asp-action="UpgradeTeam">
         <button type="submit" class="btn btn-primary">Upgrade your team</button>
     </form>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-        Abandon run
-    </button>
+    
 </div>
+
+<button type="button" class="btn btn-danger float-sm-right" data-toggle="modal" data-target="#exampleModal">
+    Abandon run
+</button>
