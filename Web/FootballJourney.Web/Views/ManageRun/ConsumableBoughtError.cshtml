@@ -1,10 +1,14 @@
-﻿You have already bought a consumable! Beat another opponent to be eligible for a new consumable.
+﻿<h2>You have already bought a consumable! Beat another opponent to be eligible for a new consumable.
 You can make a transfer if you haven't done so yet or go to your current run page.
+    </h2>
 
-<form asp-controller="ManageRun" asp-action="MakeTransfer" method="post">
-    <button type="submit">Make a transfer</button>
-</form>
 
-<form asp-controller="ManageRun" asp-action="ShowCurrentRun">
-    <button type="submit">Return to current run</button>
-</form>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <form asp-controller="ManageRun" asp-action="MakeTransfer">
+        <button type="submit" class="btn btn-success">Make transfer</button>
+    </form>
+    <form asp-controller="ManageRun" asp-action="ShowCurrentRun">
+        <button type="submit" class="btn btn-primary">Return to current run</button>
+    </form>
+
+</div>

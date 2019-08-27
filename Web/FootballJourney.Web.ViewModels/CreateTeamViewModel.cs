@@ -9,7 +9,7 @@ namespace FootballJourney.Web.ViewModels
     {
         [Required]
         [Display(Name = "Team Name")]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
         public string TeamName { get; set; }
     }
 }

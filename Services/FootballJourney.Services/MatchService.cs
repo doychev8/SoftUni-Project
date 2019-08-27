@@ -91,15 +91,13 @@ namespace FootballJourney.Services
             if (userGoals == opponentGoals)
             {
                 opponentGoals++;
-                
             }
+
             dict.Add("userGoals", userGoals);
             dict.Add("opponentGoals", opponentGoals);
 
             return dict;
         }
-
-
 
         private int GetPoints(Team team, Position position)
         {
