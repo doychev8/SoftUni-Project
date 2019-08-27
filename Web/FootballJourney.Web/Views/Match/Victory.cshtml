@@ -3,15 +3,54 @@
 
 <center><h1>You won</h1></center>
 
+@{
+    <div class="row">
+        <div class="container col-sm-5">
 
-Your goals: <div>@this.ViewBag.userGoals</div>
-Opponent goals: <div>@this.ViewBag.opponentGoals</div>
+            <center><h1 class="sub-header">@Model.Team.Name</h1></center>
+
+        </div>
+
+        <div>
+            <center><h1>VS</h1></center>
+        </div>
 
 
-<form asp-controller="ManageRun" asp-action="GetNextOpponent" method="post">
-    <button type="submit">Proceed to the next game</button>
-</form>
+        <div class="container col-sm-5 justify-content-end">
 
-<form asp-controller="ManageRun" asp-action="UpgradeTeam">
-    <button type="submit">Upgrade your team</button>
-</form>
+            <center><h1 class="sub-header">@ViewBag.Opponent</h1></center>
+
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="container col-sm-5">
+
+            <center><h1 class="sub-header">@ViewBag.userGoals</h1></center>
+
+        </div>
+
+
+
+        <div class="container col-sm-5 justify-content-end">
+
+            <center><h1 class="sub-header">@ViewBag.opponentGoals</h1></center>
+
+
+        </div>
+    </div>
+}
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <form asp-controller="ManageRun" asp-action="GetNextOpponent">
+        <button type="submit" class="btn btn-success">Proceed to next game</button>
+    </form>
+    <form asp-controller="ManageRun" asp-action="UpgradeTeam">
+        <button type="submit" class="btn btn-primary">Upgrade your team</button>
+    </form>
+
+</div>

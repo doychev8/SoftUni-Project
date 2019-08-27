@@ -128,6 +128,13 @@ namespace FootballJourney.Services
 
         }
 
+        public Run GetRunById(string id)
+        {
+            var run = this.db.Runs.FirstOrDefault(x => x.Id == id);
+
+            return run;
+        }
+
         public List<Run> GetRunsByUser(string userId)
         {
             
@@ -141,6 +148,7 @@ namespace FootballJourney.Services
         public void GoToNextStage(Run run)
         {
             run.Stage++;
+            run.BeatenOpponents.Add(run.CurrentOpponent);
             run.CurrentOpponent = null;
             run.HasBoughtConsumable = false;
             run.HasMadeTransfer = false;

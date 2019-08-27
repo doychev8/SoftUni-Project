@@ -4,8 +4,47 @@
 <center><h1>You won</h1></center>
 
 
-Your goals: <div>@this.ViewBag.userGoals</div>
-Opponent goals: <div>@this.ViewBag.opponentGoals</div>
+@{
+    <div class="row">
+        <div class="container col-sm-5">
+
+            <center><h1 class="sub-header">@Model.Team.Name</h1></center>
+
+        </div>
+
+        <div>
+            <center><h1>VS</h1></center>
+        </div>
+
+
+        <div class="container col-sm-5 justify-content-end">
+
+            <center><h1 class="sub-header">@Model.CurrentOpponent.Name</h1></center>
+
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="container col-sm-5">
+
+            <center><h1 class="sub-header">@ViewBag.userGoals</h1></center>
+
+        </div>
+
+
+
+        <div class="container col-sm-5 justify-content-end">
+
+            <center><h1 class="sub-header">@ViewBag.opponentGoals</h1></center>
+
+
+        </div>
+    </div>
+}
 
 
 Congratulations! You have successfuly beaten all opponents! Your run is now over.

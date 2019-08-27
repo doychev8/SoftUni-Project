@@ -82,8 +82,8 @@ namespace FootballJourney.Services
                 User = this.context.Users.FirstOrDefault(x => x.Id == userId),
                 Team = this.context.Teams.FirstOrDefault(x => x.Id == teamId),
                 IsEnded = false,
-                Money = 100,
                 Stage = 1,
+                StartedOn = DateTime.UtcNow,
             };
 
             this.context.Runs.Add(run);

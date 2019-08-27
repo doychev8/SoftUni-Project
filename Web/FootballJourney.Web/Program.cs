@@ -9,7 +9,7 @@
     {
         public static void Main(string[] args)
         {
-            // TODO: Try listing the team in transfer and consumable page
+            
 
             CreateWebHostBuilder(args).Build().Run();
 

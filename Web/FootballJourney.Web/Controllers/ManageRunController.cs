@@ -25,6 +25,13 @@ namespace FootballJourney.Web.Controllers
             this.consumableService = consumableService;
         }
 
+        
+        public IActionResult ShowSpecificRun(string id)
+        {
+            var run = this.runService.GetRunById(id);
+            return this.View(run);
+        }
+
         [Authorize]
         public IActionResult ListAllRuns()
         {
@@ -32,6 +39,11 @@ namespace FootballJourney.Web.Controllers
             var user = this.userService.GetUser(userId);
 
             List<Data.Models.Run> userRuns = this.runService.GetRunsByUser(userId);
+
+            if (userRuns.Count == 0)
+            {
+                return this.View("NoRunsToList");
+            }
 
             return this.View(userRuns);
         }

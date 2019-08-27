@@ -25,6 +25,8 @@
     <Compile Remove="Migrations\20190817125403_AddedTierPropertyToTeam.Designer.cs" />
     <Compile Remove="Migrations\20190824160118_AddedAdditionalPropertiesToRunModel.cs" />
     <Compile Remove="Migrations\20190824160118_AddedAdditionalPropertiesToRunModel.Designer.cs" />
+    <Compile Remove="Migrations\20190827125442_ExtendedFunctionalityOfRunModel.cs" />
+    <Compile Remove="Migrations\20190827125442_ExtendedFunctionalityOfRunModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

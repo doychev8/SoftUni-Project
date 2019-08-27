@@ -19,7 +19,7 @@
 
                 <tbody>
 
-                    @foreach (var item in Model.Team.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Goalkeeper).ToList())
+                    @foreach (var item in Model.Team.Players.OrderBy(x => x.Position))
                     {
                         <tr>
                             <td>@item.Position</td>
@@ -29,33 +29,6 @@
                         </tr>
                     }
 
-                    @foreach (var item in Model.Team.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Defender).ToList())
-                    {
-                        <tr>
-                            <td>@item.Position</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.Points</td>
-                        </tr>
-                    }
-                    @foreach (var item in Model.Team.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Midfielder).ToList())
-                    {
-                        <tr>
-                            <td>@item.Position</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.Points</td>
-                        </tr>
-                    }
-                    @foreach (var item in Model.Team.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Attacker).ToList())
-                    {
-                        <tr>
-                            <td>@item.Position</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.Points</td>
-                        </tr>
-                    }
                 </tbody>
             </table>
         </div>
@@ -80,7 +53,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach (var item in Model.CurrentOpponent.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Goalkeeper).ToList())
+                        @foreach (var item in Model.CurrentOpponent.Players.OrderBy(x => x.Position))
                         {
                             <tr>
                                 <td>@item.Position</td>
@@ -90,33 +63,6 @@
                             </tr>
                         }
 
-                        @foreach (var item in Model.CurrentOpponent.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Defender).ToList())
-                        {
-                            <tr>
-                                <td>@item.Position</td>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Points</td>
-                            </tr>
-                        }
-                        @foreach (var item in Model.CurrentOpponent.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Midfielder).ToList())
-                        {
-                            <tr>
-                                <td>@item.Position</td>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Points</td>
-                            </tr>
-                        }
-                        @foreach (var item in Model.CurrentOpponent.Players.Where(x => x.Position == FootballJourney.Data.Models.Enums.Position.Attacker).ToList())
-                        {
-                            <tr>
-                                <td>@item.Position</td>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Points</td>
-                            </tr>
-                        }
                     </tbody>
                 </table>
             </div>

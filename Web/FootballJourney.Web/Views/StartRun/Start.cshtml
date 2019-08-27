@@ -1,6 +1,12 @@
 ﻿@model CreateTeamViewModel
 
 
+<center>
+    <h1>
+        Start new run
+    </h1>
+</center>
+
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
@@ -9,7 +15,7 @@
                 <label>Select team name</label>
                 <input asp-for="TeamName" type="text" class="form-control" />
                 <br />
-                <button type="submit">Generate team</button>
+                <button class="btn-dark" type="submit">Generate team</button>
             </form>
         </div>
     </div>

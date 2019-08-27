@@ -2,8 +2,10 @@
 
 
 <div>
+    <h3>
     Select a consumable from the list to boost your team. Individual consumables boost a random player on the stated position.
-    Team consumables boost all players on the given position.
+    Team consumables boost all players on the given position but with less points. Bellow is listed your current team so you can easily see where you might need and improvement.
+        </h3>
 </div>
 
 
@@ -16,7 +18,7 @@
           new SelectListItem {Text = $"{Model[0].Name}", Value = Model[0].Id},
           new SelectListItem {Text = $"{Model[1].Name}", Value = Model[1].Id},
           new SelectListItem {Text = $"{Model[2].Name}", Value = Model[2].Id},
-          
+
 
     }, "Select consumable");
 
@@ -25,14 +27,40 @@
     <input type="submit" value="Submit" />
 }
 
-@{ 
-    var players = this.ViewData["TeamToList"] as List<FootballJourney.Data.Models.Player>;
+<br />
 
-    foreach (var item in players.OrderBy(x => x.Position))
-    {
-        <div>
-            @item.Position - @item.LastName - @item.Points
-        </div>
-        <br />
-    }
+@{
+    var players = this.ViewData["TeamToList"] as List<FootballJourney.Data.Models.Player>;
+    <table class="table-sm table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Position
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    Points
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in players.OrderBy(x => x.Position))
+            {
+                <tr>
+                    <td>
+                        @item.Position
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.Points
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 }

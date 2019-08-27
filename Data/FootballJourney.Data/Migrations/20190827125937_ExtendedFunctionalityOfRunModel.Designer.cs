@@ -4,14 +4,16 @@ using FootballJourney.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballJourney.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190827125937_ExtendedFunctionalityOfRunModel")]
+    partial class ExtendedFunctionalityOfRunModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,6 +181,8 @@ namespace FootballJourney.Data.Migrations
 
                     b.Property<bool>("IsEnded");
 
+                    b.Property<int>("Money");
+
                     b.Property<int>("Stage");
 
                     b.Property<DateTime>("StartedOn");
@@ -238,13 +242,9 @@ namespace FootballJourney.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("RunId");
-
                     b.Property<int?>("Tier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RunId");
 
                     b.ToTable("Teams");
                 });
@@ -364,13 +364,6 @@ namespace FootballJourney.Data.Migrations
                         .WithMany("Runs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.SetNull);
-                });
-
-            modelBuilder.Entity("FootballJourney.Data.Models.Team", b =>
-                {
-                    b.HasOne("FootballJourney.Data.Models.Run")
-                        .WithMany("BeatenOpponents")
-                        .HasForeignKey("RunId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

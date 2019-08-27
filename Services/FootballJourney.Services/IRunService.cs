@@ -20,5 +20,7 @@ namespace FootballJourney.Services
         void MakeTransfer(Run run, Player player);
 
         void ApplyConsumable(Consumable consumable, Run run);
+
+        Run GetRunById(string id);
     }
 }

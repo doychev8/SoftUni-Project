@@ -1,14 +1,32 @@
 ﻿@model List<FootballJourney.Data.Models.Run>
 
-@{ 
-    foreach (var run in Model)
-    {
-        <h1>@run.Team.Name</h1>
-        <br />
 
-        @foreach (var item in run.Team.Players)
-        {
-            <div>@item.FirstName</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            
+            <th>Team name</th>
+               
+            <th>Started on</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var run in Model.OrderByDescending(x => x.StartedOn))
+            {
+                <tr>
+                    <td>
+                        <h4>
+                        <a asp-controller="ManageRun" asp-action="ShowSpecificRun" asp-route-id="@run.Id">@run.Team.Name</a>
+                            </h4>
+                    </td>
+                    
+                    <td>
+                        @run.StartedOn
+                    </td>
+                </tr>
+            }
         }
-    }
-}
+    </tbody>
+</table>

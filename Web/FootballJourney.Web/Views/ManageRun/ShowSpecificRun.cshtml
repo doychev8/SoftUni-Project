@@ -1,0 +1,68 @@
+﻿@model FootballJourney.Data.Models.Run
+
+<center>
+    <h1>
+        @Model.Team.Name
+    </h1>
+</center>
+
+<div class="row">
+    <div class="container col-sm-5">
+
+        @{
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Team.Players.OrderBy(x => x.Position))
+                    {
+                        <tr>
+                            <td>@item.Position</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Points</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+
+    <div class="container col-sm-5 justify-content-end">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Stage reached</th>
+                    <th>@Model.Stage</th>
+                </tr>
+                <tr>
+                    <th>
+                        Opponents beaten
+                    </th>
+                    <th>@Model.BeatenOpponents.Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var opp in Model.BeatenOpponents)
+                {
+                    <tr>
+                        
+                        <td>
+                            @opp.Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+   
+</div>
