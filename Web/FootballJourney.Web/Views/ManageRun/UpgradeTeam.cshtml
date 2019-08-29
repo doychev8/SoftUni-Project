@@ -1,11 +1,29 @@
-﻿<center><strong>This is your upgrade hub. From here you can make transfers and/or buy consumables to upgrade your team. Please note that you can do both
-but only once for each stage.</strong></center>
+﻿<center><h3>This is your upgrade hub. From here you can make transfers and/or buy consumables to upgrade your team. Please note that you can do both
+but only once for each stage.</h3></center>
 
 
-    <form asp-controller="ManageRun" asp-action="MakeTransfer" method="post">
-        <button type="submit">Make transfer</button>
-    </form>
+<br />
 
-    <form asp-controller="ManageRun" asp-action="BuyConsumable" method="post">
-        <button type="submit">Buy consumable</button>
-    </form>
+<div class="row">
+    <div class="card container col-sm-5" style="width: 18rem;">
+        <img class="card-img-top" src="~/img/footballer.png" width="30" height="275" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Transfer</h5>
+            <p class="card-text">Replace a player in your team for a better one</p>
+            <form asp-controller="ManageRun" asp-action="MakeTransfer" method="post">
+                <button type="submit" class="btn btn-dark">Make transfer</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card container col-sm-5 justify-content-end" style="width: 18rem;">
+        <img class="card-img-top" src="~/img/1530699951-95346000.jpg" width="40" height="250" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Consumable</h5>
+            <p class="card-text">Consumables are improvements you can get to boost your team's power</p>
+            <form asp-controller="ManageRun" asp-action="BuyConsumable" method="post">
+                <button type="submit" class="btn btn-dark">Buy consumable</button>
+            </form>
+        </div>
+    </div>
+</div>
