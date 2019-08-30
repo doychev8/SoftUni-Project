@@ -89,6 +89,7 @@ namespace FootballJourney.Web.Controllers
 
             var user = this.GetUser();
 
+
             if (user.CurrentRun.HasMadeTransfer == true)
             {
                 return this.View("TransferAlreadyMadeError");

@@ -148,7 +148,7 @@ namespace FootballJourney.Services
         public void GoToNextStage(Run run)
         {
             run.Stage++;
-            run.BeatenOpponents.Add(run.CurrentOpponent);
+            run.BeatenOpponents++;
             run.CurrentOpponent = null;
             run.HasBoughtConsumable = false;
             run.HasMadeTransfer = false;

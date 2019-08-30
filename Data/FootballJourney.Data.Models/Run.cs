@@ -10,7 +10,7 @@ namespace FootballJourney.Data.Models
     {
         public Run()
         {
-            this.BeatenOpponents = new List<Team>();
+            
         }
 
         public string Id { get; set; }
@@ -33,6 +33,7 @@ namespace FootballJourney.Data.Models
         public bool HasBoughtConsumable { get; set; }
 
         public DateTime StartedOn { get; set; }
-        public virtual ICollection<Team> BeatenOpponents { get; set; }
+
+        public int BeatenOpponents { get; set; }
     }
 }
