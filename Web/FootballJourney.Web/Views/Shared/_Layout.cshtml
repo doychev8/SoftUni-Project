@@ -48,8 +48,11 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="ManageRun" asp-action="ShowCurrentRun">Current run</a>
                             </li>
+
+                            <br />
+
                             <li class="nav-item">
-                                <div class="nav-link text-dark" asp-area="">All time wins: @this.userService.GetAllTimeWins(User.Identity.Name)</div>
+                                <div class="nav-link text-dark" asp-area="">Wins: @this.userService.GetAllTimeWins(User.Identity.Name)</div>
                             </li>
                             <li class="nav-item">
                                 <div class="nav-link text-dark" asp-area="">Opponents beaten: @this.userService.GetAllTimeOpponentsBeaten(User.Identity.Name)</div>
