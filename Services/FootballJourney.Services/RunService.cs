@@ -184,17 +184,17 @@ namespace FootballJourney.Services
                     break;
 
                 case 2:
-                    opponents = opponents.Where(x => x.Tier == 5 || x.Tier == 4).ToList();
+                    opponents = opponents.Where(x => x.Tier == 4).ToList();
                     index = random.Next(0, opponents.Count - 1);
                     opponent = opponents[index];
                     break;
                 case 3:
-                    opponents = opponents.Where(x => x.Tier == 4 || x.Tier == 3).ToList();
+                    opponents = opponents.Where(x => x.Tier == 3).ToList();
                     index = random.Next(0, opponents.Count - 1);
                     opponent = opponents[index];
                     break;
                 case 4:
-                    opponents = opponents.Where(x => x.Tier == 3 || x.Tier == 2).ToList();
+                    opponents = opponents.Where(x => x.Tier == 2).ToList();
                     index = random.Next(0, opponents.Count - 1);
                     opponent = opponents[index];
                     break;

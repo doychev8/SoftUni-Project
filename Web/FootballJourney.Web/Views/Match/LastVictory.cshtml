@@ -19,7 +19,7 @@
 
         <div class="container col-sm-5 justify-content-end">
 
-            <center><h1 class="sub-header">@Model.CurrentOpponent.Name</h1></center>
+            <center><h1 class="sub-header">@this.ViewBag.OpponentName</h1></center>
 
 
         </div>
@@ -46,13 +46,36 @@
     </div>
 }
 
+<br />
 
-Congratulations! You have successfuly beaten all opponents! Your run is now over.
+<center>
+    <h2>
+        Congratulations! You have successfuly beaten all opponents! Your run is now over.
 
-<form asp-controller="Home" asp-action="Index">
+    </h2>
+</center>
+
+<br />
+
+<center>
+
+    <div class="btn-group align-bottom" role="group" aria-label="Basic example">
+        <form asp-controller="Home" asp-action="Index">
+            <button type="submit" class="btn btn-dark btn-outline-light">Go to home</button>
+        </form>
+        <form asp-controller="StartRun" asp-action="Start">
+            <button type="submit" class="btn btn-dark btn-outline-light">Start new run</button>
+        </form>
+
+    </div>
+
+</center>
+
+
+@*<form asp-controller="Home" asp-action="Index">
     <button type="submit">Go to home</button>
 </form>
 
 <form asp-controller="StartRun" asp-action="Start">
     <button type="submit">Start new run</button>
-</form>
+</form>*@

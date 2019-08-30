@@ -35,15 +35,15 @@ namespace FootballJourney.Web.Controllers
 
             if (result["isWinner"] == 1)
             {
-                this.ViewBag.Opponent = run.CurrentOpponent.Name;
-                this.runService.GoToNextStage(run);
-
-                if (run.Stage > 5)
+                if (run.Stage == 5)
                 {
+                    this.ViewBag.OpponentName = run.CurrentOpponent.Name;
                     this.runService.AbandonRun(userId, run);
                     return this.View("LastVictory", run);
                 }
 
+                this.ViewBag.Opponent = run.CurrentOpponent.Name;
+                this.runService.GoToNextStage(run);
                 return this.View("Victory", run);
             }
 
