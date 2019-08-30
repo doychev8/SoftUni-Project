@@ -38,10 +38,13 @@ namespace FootballJourney.Web.Controllers
                 if (run.Stage == 5)
                 {
                     this.ViewBag.OpponentName = run.CurrentOpponent.Name;
+                    user.AllTimeOpponentsBeaten++;
+                    user.AllTimeWins++;
                     this.runService.AbandonRun(userId, run);
                     return this.View("LastVictory", run);
                 }
 
+                user.AllTimeOpponentsBeaten++;
                 this.ViewBag.Opponent = run.CurrentOpponent.Name;
                 this.runService.GoToNextStage(run);
                 return this.View("Victory", run);

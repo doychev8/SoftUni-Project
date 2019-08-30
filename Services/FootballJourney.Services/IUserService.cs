@@ -8,5 +8,8 @@ namespace FootballJourney.Services
     public interface IUserService
     {
         ApplicationUser GetUser(string userId);
+
+        int GetAllTimeOpponentsBeaten(string username);
+        int GetAllTimeWins(string username);
     }
 }
